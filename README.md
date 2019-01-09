@@ -1,2 +1,2 @@
-# dynamics-365-webhook-automapper
-Dynamics 365 WebHook AutoMapper for C#
+# Dynamics 365 WebHook AutoMapper for C#
+This script will map data from the post image of a webhook call from D365 into a C# POCO class using property metadata.
