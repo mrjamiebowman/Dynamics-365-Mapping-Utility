@@ -1,2 +1,2 @@
 # Dynamics 365 (D365) Entity/WebHook AutoMapper for C#
-This script will map data from the post image of a webhook call from D365 into a C# POCO class using property metadata.
+This tool will map data from Dynamics 365 entities or webhook calls into C# POCO classes using property metadata.
