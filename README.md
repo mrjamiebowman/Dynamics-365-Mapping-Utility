@@ -5,7 +5,7 @@ This tool will map data from Dynamics 365 entities or webhook calls into C# POCO
 
 ## Getting Started
 
-DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = customMapping<AccountModel>;
+DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = customMapping<AccountModel>;  
 AccountModel accountModel = DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToModel(postImage, accountModel);
 
 ## Contributing
