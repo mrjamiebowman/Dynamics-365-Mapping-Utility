@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jamie Bowman, @mrjamiebowman</Authors>
+    <Company />
+    <Product>Dynamics 365 AutoMapper</Product>
+    <Description>Dynamics 365 AutoMapper</Description>
+    <Copyright>Copyright 2019 Jamie Bowman</Copyright>
+    <RepositoryUrl>https://github.com/mrjamiebowman/Dynamics-365-AutoMapper</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <PackageProjectUrl>https://www.mrjamiebowman.com/software-development/dynamics-crm-d365/dynamics-365-webhook-automapper/</PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageTags>dynamics crm 365 webhooks automapper</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
