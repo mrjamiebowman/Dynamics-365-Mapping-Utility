@@ -3,6 +3,8 @@ This tool will map data from Dynamics 365 entities or webhook calls into C# POCO
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/develop?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/develop)
+
 
 ## NuGet Package
 
