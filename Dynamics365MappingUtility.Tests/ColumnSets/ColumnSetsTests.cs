@@ -13,7 +13,7 @@ namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
                 x => x.CreatedOn);
 
             // assert
-            Assert.Equal(5, columnSet.Columns.Count);            
+            Assert.Equal(4, columnSet.Columns.Count);            
         }
     }
 }
