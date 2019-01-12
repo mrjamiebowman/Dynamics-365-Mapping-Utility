@@ -16,7 +16,7 @@ namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
                 x => x.CreatedOn);
 
             // assert
-            AccountModel model = new AccountModel();
+            Assert.Equal(4, columnSet.Columns.Count);
             
         }
     }

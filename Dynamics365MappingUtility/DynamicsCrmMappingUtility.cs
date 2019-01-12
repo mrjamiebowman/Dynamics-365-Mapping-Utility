@@ -27,19 +27,51 @@ namespace DynamicsCrmMappingUtility {
         public static ColumnSet GetColumnSetByFields(params Expression<Func<T, Object>>[] fields) {
             ColumnSet columns = new ColumnSet();
 
-            List<PropertyInfo> modelProps = typeof(T).GetProperties().ToList();
-
-            foreach (Object obj in fields) {
+            foreach (var obj in fields) {
                 // TODO: magic?
+                CRMAttribute attr = GetAttributeFromExpression(obj?.Body, typeof(CRMAttribute)) as CRMAttribute;
 
-                //CRMAttribute attr = proprety.GetCustomAttribute(typeof(CRMAttribute)) as CRMAttribute;
-
-                //if (attr != null) {
-                //    columns.AddColumn(attr.FieldName);
-                //}                
+                if (attr != null) {
+                    columns.AddColumn(attr.FieldName);
+                }
             }
             
             return columns;
+        }
+
+        private static System.Attribute GetAttributeFromExpression(Expression expression, Type attrType) {
+            if (expression == null) {
+                throw new ArgumentException("Expression is null.");
+            }
+
+            if (expression is MemberExpression) {
+                // Reference type property or field
+                var memberExpression = (MemberExpression)expression;
+                return memberExpression.Member.GetCustomAttribute(attrType);
+            }
+
+            if (expression is MethodCallExpression) {
+                // Reference type method
+                var methodCallExpression = (MethodCallExpression)expression;
+                return methodCallExpression.Method.GetCustomAttribute(attrType);
+            }
+
+            if (expression is UnaryExpression) {
+                // Property, field of method returning value type
+                var unaryExpression = (UnaryExpression)expression;
+                return GetAttributeFromExpression(unaryExpression, attrType);
+            }
+
+            throw new ArgumentException("ArgumentException");
+        }
+
+        private static System.Attribute GetAttributeFromExpression(UnaryExpression unaryExpression, Type attrType) {
+            if (unaryExpression.Operand is MethodCallExpression) {
+                var methodExpression = (MethodCallExpression)unaryExpression.Operand;
+                return methodExpression.Method.GetCustomAttribute(attrType);
+            }
+
+            return ((MemberExpression)unaryExpression.Operand).Member.GetCustomAttribute(attrType);
         }
 
         public static Entity MapToEntity(T model, Entity entity = null, params Expression<Func<T, Object>>[] fields) {            
