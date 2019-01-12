@@ -25,3 +25,5 @@ AccountModel accountModel = DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToMode
 ## Backlog
 
 ## Special Thanks
+
+Automate The Planet, this article helped a lot with expressions. https://www.automatetheplanet.com/get-property-names-using-lambda-expressions/
