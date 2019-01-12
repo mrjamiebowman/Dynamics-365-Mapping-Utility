@@ -22,7 +22,7 @@ namespace Dynamics365AutoMapper {
             return properties;
         }
 
-        public static T MapDataCrmToModel(JObject image, T model) {
+        public static T MapToModel(JObject image, T model) {
             List<AttributeModel> attributes = image["Attributes"].ToObject<List<AttributeModel>>();
 
             foreach (AttributeModel attr in attributes) {
