@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicsCrmMappingUtility", "Dynamics365AutoMapper\DynamicsCrmMappingUtility.csproj", "{0C6E59AD-5679-4CB4-BADC-E9D8FFF3EE0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicsCrmMappingUtility", "Dynamics365MappingUtility\DynamicsCrmMappingUtility.csproj", "{0C6E59AD-5679-4CB4-BADC-E9D8FFF3EE0F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicsCrmMappingUtility.Tests", "Dynamics365AutoMapper.Tests\DynamicsCrmMappingUtility.Tests.csproj", "{880F08FC-01FF-4BDC-90F1-6DD0890AA565}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicsCrmMappingUtility.Tests", "Dynamics365MappingUtility.Tests\DynamicsCrmMappingUtility.Tests.csproj", "{880F08FC-01FF-4BDC-90F1-6DD0890AA565}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D365.Samples.WebHooks", "D365.Samples.WebHooks\D365.Samples.WebHooks.csproj", "{90853A66-D16C-4002-9355-67EF9D791EA3}"
 EndProject
