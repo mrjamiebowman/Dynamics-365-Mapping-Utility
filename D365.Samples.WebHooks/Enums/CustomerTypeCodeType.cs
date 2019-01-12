@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dynamics365AutoMapper.Enums {
-    public enum CustomerTypeCode {
+namespace D365.Samples.WebHooks.Enums {
+    public enum CustomerTypeCodeType {
         Competitor = 1,
         Consultant = 2,
         Customer = 3,
