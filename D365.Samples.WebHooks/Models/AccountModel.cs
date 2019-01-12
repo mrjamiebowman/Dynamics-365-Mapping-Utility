@@ -1,9 +1,6 @@
-﻿using Dynamics365AutoMapper.Attributes;
-using Dynamics365AutoMapper.Enums;
+﻿using D365.Samples.WebHooks.Enums;
+using Dynamics365AutoMapper.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace D365.Samples.WebHooks.Models {
     public class AccountModel {
@@ -11,8 +8,11 @@ namespace D365.Samples.WebHooks.Models {
         [CRM(FieldName = "accountid")]
         public Guid? AccountId { get; set; }
 
-        [CRM(FieldName = "accountid")]
+        [CRM(FieldName = "name")]
         public string AccountName { get; set; }
+
+        [CRM(FieldName = "accountnumber")]
+        public string AccountNumber { get; set; }
 
         [CRM(FieldName = "createdon")]
         public DateTime? CreatedOn { get; set; }
@@ -21,7 +21,7 @@ namespace D365.Samples.WebHooks.Models {
         public DateTime? ModifiedOn { get; set; }
         
         // this field will have a custom map
-        //[CRM(FieldName = "customertypecode", CustomFieldMap = CustomerTypeCode?.GetType())]
-        public CustomerTypeCode? CustomerTypeCode { get; set; }
+        [CRM(FieldName = "customertypecode", CustomFieldMap = typeof(CustomerTypeCodeType?))]
+        public CustomerTypeCodeType? CustomerTypeCode { get; set; }
     } 
 }
