@@ -1,7 +1,9 @@
 # Dynamics 365 (D365) Entity/WebHook Auto Mapper for C#
 This tool will map data from Dynamics 365 entities, json, or webhook calls into C# model classes using property metadata.
 
-[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/Dynamics-365-Mapping-Utility)
+| Master | Develop |
+|:------:|:-------:|
+|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/master?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/master)|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/develop?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/master)|
 
 | Issues | Forks | Starts | License | Tweets |
 |:--------:|:-------:|:--------:|:---------:|:--------:|
