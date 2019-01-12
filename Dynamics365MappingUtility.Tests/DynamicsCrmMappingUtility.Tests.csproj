@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\D365.Samples.WebHooks\D365.Samples.WebHooks.csproj" />
-    <ProjectReference Include="..\Dynamics365AutoMapper\DynamicsCrmMappingUtility.csproj" />
+    <ProjectReference Include="..\Dynamics365MappingUtility\DynamicsCrmMappingUtility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
