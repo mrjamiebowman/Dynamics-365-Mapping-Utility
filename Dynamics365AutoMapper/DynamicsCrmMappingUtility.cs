@@ -11,7 +11,7 @@ using Microsoft.Xrm.Sdk.Query;
 using System.Linq.Expressions;
 
 namespace Dynamics365AutoMapper {
-    public class DynamicsCrmAutoMapper<T> where T : class {
+    public class DynamicsCrmMappingUtility<T> where T : class {
         public delegate void CustomMappingMethodDelegate(T model, Type customFieldMap, PropertyInfo property, object value);
 
         public static CustomMappingMethodDelegate CustomMappingMethod { get; set; }

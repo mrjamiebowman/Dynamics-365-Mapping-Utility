@@ -17,7 +17,7 @@ namespace Dynamics365AutoMapper.Tests.EntityMapping {
 
             // map jobject data to model
             //DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
-            Entity accountEntity = DynamicsCrmAutoMapper<AccountModel>.MapToEntity(model, null);
+            Entity accountEntity = DynamicsCrmMappingUtility<AccountModel>.MapToEntity(model, null);
 
             
         }

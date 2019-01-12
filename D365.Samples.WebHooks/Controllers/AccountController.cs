@@ -22,8 +22,8 @@ namespace D365.Samples.WebHook.Controllers {
             AccountModel model = new AccountModel();
 
             // map jobject data to model
-            DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
-            DynamicsCrmAutoMapper<AccountModel>.MapToModel(postImage, model);
+            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+            DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
             string test = model.AccountName;
         }
