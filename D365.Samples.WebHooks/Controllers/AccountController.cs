@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using D365.Samples.WebHooks.Helpers;
+using D365.Samples.WebHooks.Models;
+using Dynamics365AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 
 namespace D365.Samples.WebHook.Controllers {
@@ -12,9 +15,17 @@ namespace D365.Samples.WebHook.Controllers {
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] JObject data) {
-            string test = "";
-            //JObject postImage = data?.PostEntityImages[0]?.value;
+        public void Post([FromBody] JObject data) {            
+            JObject postImage = (JObject)data["PostEntityImages"][0]["value"];
+
+            // instantiate model
+            AccountModel model = new AccountModel();
+
+            // map jobject data to model
+            DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+            DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToModel(postImage, model);
+
+            string test = model.AccountName;
         }
     }
 }
