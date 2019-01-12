@@ -24,19 +24,25 @@ namespace DynamicsCrmMappingUtility {
             return properties;
         }
 
-        public static ColumnSet GetColumnSetByProperties(params Expression<Func<T, object>>[] fields) {
+        public static ColumnSet GetColumnSetByFields(params Expression<Func<T, Object>>[] fields) {
             ColumnSet columns = new ColumnSet();
 
-            PropertyInfo[] modelProps = typeof(T).GetProperties();
+            List<PropertyInfo> modelProps = typeof(T).GetProperties().ToList();
 
-            foreach (var field in fields) {
-                string test = "";
+            foreach (Object obj in fields) {
+                // TODO: magic?
+
+                //CRMAttribute attr = proprety.GetCustomAttribute(typeof(CRMAttribute)) as CRMAttribute;
+
+                //if (attr != null) {
+                //    columns.AddColumn(attr.FieldName);
+                //}                
             }
             
             return columns;
         }
 
-        public static Entity MapToEntity(T model, Entity entity = null, params Expression<Func<T, object>>[] fields) {            
+        public static Entity MapToEntity(T model, Entity entity = null, params Expression<Func<T, Object>>[] fields) {            
             if (entity == null) {
                 entity = new Entity();
                 CRMEntityAttribute crmEntAtt = typeof(T).GetCustomAttribute(typeof(CRMEntityAttribute)) as CRMEntityAttribute;

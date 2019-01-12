@@ -9,7 +9,11 @@ namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
     public class ColumnSetsTests {
         [Fact]
         public void GetColumnSetsTests() {
-            ColumnSet columnSet = DynamicsCrmMappingUtility<AccountModel>.GetColumnSetByProperties(x => x.AccountId, x => x.AccountName);
+             ColumnSet columnSet = DynamicsCrmMappingUtility<AccountModel>.GetColumnSetByFields(
+                x => x.AccountId, 
+                x => x.AccountName, 
+                x => x.AccountNumber, 
+                x => x.CreatedOn);
 
             // assert
             AccountModel model = new AccountModel();
