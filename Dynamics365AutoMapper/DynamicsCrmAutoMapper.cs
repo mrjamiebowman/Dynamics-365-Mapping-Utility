@@ -22,6 +22,32 @@ namespace Dynamics365AutoMapper {
             return properties;
         }
 
+        public static Entity MapToEntity(T model, Entity entity = null) {
+            // TODO: get all properties from crm model
+
+            // return type
+            if (entity == null) {
+                entity = new Entity();
+            }
+
+            // TODO: read metadata
+
+            // TODO: map to entity
+
+            return entity;
+        }
+
+        public static T MapToModel(Entity entity, T model) {
+
+            return model;
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="image">WebHook: Target, PreImage, or PostImage</param>
+        /// <param name="model">Model with CRM Attributes for metadata mapping</param>
+        /// <returns></returns>
         public static T MapToModel(JObject image, T model) {
             List<AttributeModel> attributes = image["Attributes"].ToObject<List<AttributeModel>>();
 

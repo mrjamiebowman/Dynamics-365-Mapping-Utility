@@ -3,6 +3,7 @@ using Dynamics365AutoMapper.Attributes;
 using System;
 
 namespace D365.Samples.WebHooks.Models {
+    [CRMEntity("account")]
     public class AccountModel {
 
         [CRM(FieldName = "accountid")]
