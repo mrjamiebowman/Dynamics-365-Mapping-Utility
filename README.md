@@ -3,7 +3,7 @@ This tool will map data from Dynamics 365 entities, json, or webhook calls into 
 
 | Master | Develop |
 |:------:|:-------:|
-|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/master?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/master)|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/develop?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/master)|
+|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/master?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/master)|[![Build status](https://ci.appveyor.com/api/projects/status/7y6wth92quqr4ssn/branch/develop?svg=true)](https://ci.appveyor.com/project/mrjamiebowman/dynamics-365-automapper/branch/develop)|
 
 | Issues | Forks | Starts | License | Tweets |
 |:--------:|:-------:|:--------:|:---------:|:--------:|
@@ -13,8 +13,10 @@ This tool will map data from Dynamics 365 entities, json, or webhook calls into 
 
 ## Getting Started
 
+```csharp
 DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = customMapping<AccountModel>;  
 AccountModel accountModel = DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToModel(postImage, accountModel);
+```
 
 ## Contributing
 
