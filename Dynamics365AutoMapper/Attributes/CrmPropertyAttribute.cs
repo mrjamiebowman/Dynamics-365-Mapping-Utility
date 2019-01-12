@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dynamics365AutoMapper.Attributes {
+namespace DynamicsCrmMappingUtility.Attributes {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class CRMAttribute : System.Attribute {
         public string FieldName;

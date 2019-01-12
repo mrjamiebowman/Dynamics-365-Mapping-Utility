@@ -15,6 +15,7 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageTags>dynamics crm 365 webhooks automapper</PackageTags>
     <SignAssembly>false</SignAssembly>
+    <AssemblyName>DynamicsCrmMappingUtility</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

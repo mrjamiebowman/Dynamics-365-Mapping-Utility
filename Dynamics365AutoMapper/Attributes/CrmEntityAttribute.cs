@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dynamics365AutoMapper.Attributes {
+namespace DynamicsCrmMappingUtility.Attributes {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class CRMEntityAttribute : System.Attribute {
         public string EntityLogicalName;

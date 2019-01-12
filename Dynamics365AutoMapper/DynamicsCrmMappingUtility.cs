@@ -1,16 +1,16 @@
-﻿using Dynamics365AutoMapper.Attributes;
+﻿using DynamicsCrmMappingUtility.Attributes;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using Dynamics365AutoMapper.DataTypes;
+using DynamicsCrmMappingUtility.DataTypes;
 using Microsoft.Xrm.Sdk;
-using Dynamics365AutoMapper.Models;
+using DynamicsCrmMappingUtility.Models;
 using Microsoft.Xrm.Sdk.Query;
 using System.Linq.Expressions;
 
-namespace Dynamics365AutoMapper {
+namespace DynamicsCrmMappingUtility {
     public class DynamicsCrmMappingUtility<T> where T : class {
         public delegate void CustomMappingMethodDelegate(T model, Type customFieldMap, PropertyInfo property, object value);
 
@@ -47,7 +47,7 @@ namespace Dynamics365AutoMapper {
             if (String.IsNullOrWhiteSpace(entity.LogicalName)) {
                 throw new NullReferenceException("Entity Logical Name not set.");
             }
-
+            
             // TODO: get all properties from crm model
 
             // TODO: read metadata

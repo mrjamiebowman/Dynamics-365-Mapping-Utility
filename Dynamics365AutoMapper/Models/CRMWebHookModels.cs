@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dynamics365AutoMapper.Models {
+namespace DynamicsCrmMappingUtility.Models {
     public class Rootobject {
         public string BusinessUnitId { get; set; }
         public string CorrelationId { get; set; }

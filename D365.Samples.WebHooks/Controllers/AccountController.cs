@@ -1,6 +1,6 @@
 ﻿using D365.Samples.WebHooks.Helpers;
 using D365.Samples.WebHooks.Models;
-using Dynamics365AutoMapper;
+using DynamicsCrmMappingUtility;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 

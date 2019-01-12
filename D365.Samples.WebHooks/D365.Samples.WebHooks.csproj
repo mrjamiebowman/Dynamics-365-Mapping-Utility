@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dynamics365AutoMapper\Dynamics365AutoMapper.csproj" />
+    <ProjectReference Include="..\Dynamics365AutoMapper\DynamicsCrmMappingUtility.csproj" />
   </ItemGroup>
 
 </Project>

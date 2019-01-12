@@ -1,5 +1,5 @@
 ﻿using D365.Samples.WebHooks.Enums;
-using Dynamics365AutoMapper.Attributes;
+using DynamicsCrmMappingUtility.Attributes;
 using System;
 
 namespace D365.Samples.WebHooks.Models {

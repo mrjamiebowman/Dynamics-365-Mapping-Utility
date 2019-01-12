@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dynamics365AutoMapper.DataTypes {
+namespace DynamicsCrmMappingUtility.DataTypes {
     public class CRMDataType {
         public static Dictionary<string, Type> Dictionary = new Dictionary<string, Type>() {
             {"OptionSetValue:http://schemas.microsoft.com/xrm/2011/Contracts", typeof(OptionSetValue)},

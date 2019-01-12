@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Dynamics365AutoMapper.Tests.EntityMapping {
+namespace DynamicsCrmMappingUtility.Tests.EntityMapping {
     
     public class EntityMappingTests {
         [Fact]

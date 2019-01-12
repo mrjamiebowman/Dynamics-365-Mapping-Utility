@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Dynamics365AutoMapper.Tests {
+namespace DynamicsCrmMappingUtility.Tests {
     public class AutoMapperTests {
         [Fact]
         public void Test1() {

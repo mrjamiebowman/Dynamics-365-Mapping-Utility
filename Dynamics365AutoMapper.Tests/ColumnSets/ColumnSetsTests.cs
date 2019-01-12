@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Dynamics365AutoMapper.Tests.ColumnSets {
+namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
     public class ColumnSetsTests {
         [Fact]
         public void GetColumnSetsTests() {
