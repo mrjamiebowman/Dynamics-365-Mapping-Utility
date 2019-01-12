@@ -1,8 +1,5 @@
 ﻿using D365.Samples.WebHooks.Models;
 using Microsoft.Xrm.Sdk.Query;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
@@ -16,8 +13,7 @@ namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
                 x => x.CreatedOn);
 
             // assert
-            Assert.Equal(4, columnSet.Columns.Count);
-            
+            Assert.Equal(4, columnSet.Columns.Count);            
         }
     }
 }
