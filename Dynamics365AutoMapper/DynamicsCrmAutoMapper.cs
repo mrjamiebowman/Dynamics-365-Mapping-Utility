@@ -22,9 +22,11 @@ namespace Dynamics365AutoMapper {
             return properties;
         }
 
-        public static T MapDataCrmToModel(Value3 postImage, T model) {
-            foreach (Attribute2 attr in postImage.Attributes) {
-                List<PropertyInfo> props = GetFieldByFieldName(attr.key);
+        public static T MapDataCrmToModel(JObject image, T model) {
+            List<AttributeModel> attributes = image["Attributes"].ToObject<List<AttributeModel>>();
+
+            foreach (AttributeModel attr in attributes) {
+                List <PropertyInfo> props = GetFieldByFieldName(attr.key.ToString());
 
                 foreach (PropertyInfo prop in props) {
                     if (prop == null) {
@@ -47,18 +49,18 @@ namespace Dynamics365AutoMapper {
                     // automap properties
                     if (attr.value.GetType() == typeof(String)) {
                         // string
-                        if (prop.PropertyType == typeof(Guid)) {
+                        if (prop.PropertyType == typeof(Guid?) || prop.PropertyType == typeof(Guid)) {
                             prop.SetValue(model, new Guid(attr.value.ToString()));
                         } else {
                             prop.SetValue(model, attr.value);
                         }
-                    } else if (attr.value.GetType() == typeof(int) || attr.value.GetType() == typeof(Int64)) {
+                    } else if (attr.value.GetType() == typeof(int?) || attr.value.GetType() == typeof(int)) {
                         // int
                         prop.SetValue(model, (int)attr.value);
-                    } else if (attr.value.GetType() == typeof(bool)) {
+                    } else if (attr.value.GetType() == typeof(bool?) || attr.value.GetType() == typeof(bool)) {
                         // bool
                         prop.SetValue(model, (bool)attr.value);
-                    } else if (attr.value.GetType() == typeof(DateTime)) {
+                    } else if (attr.value.GetType() == typeof(DateTime?) || attr.value.GetType() == typeof(DateTime)) {
                         // datetime
                         prop.SetValue(model, (DateTime)attr.value);
                     } else if (attr.value.GetType() == typeof(JObject)) {

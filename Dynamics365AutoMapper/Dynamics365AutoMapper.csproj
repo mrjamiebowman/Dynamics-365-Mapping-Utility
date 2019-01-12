@@ -14,6 +14,7 @@
     <PackageProjectUrl>https://www.mrjamiebowman.com/software-development/dynamics-crm-d365/dynamics-365-webhook-automapper/</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageTags>dynamics crm 365 webhooks automapper</PackageTags>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
