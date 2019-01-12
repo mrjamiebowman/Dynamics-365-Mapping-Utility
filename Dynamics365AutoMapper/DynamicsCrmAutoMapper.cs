@@ -7,6 +7,8 @@ using System.Linq;
 using Dynamics365AutoMapper.DataTypes;
 using Microsoft.Xrm.Sdk;
 using Dynamics365AutoMapper.Models;
+using Microsoft.Xrm.Sdk.Query;
+using System.Linq.Expressions;
 
 namespace Dynamics365AutoMapper {
     public class DynamicsCrmAutoMapper<T> where T : class {
@@ -22,13 +24,31 @@ namespace Dynamics365AutoMapper {
             return properties;
         }
 
-        public static Entity MapToEntity(T model, Entity entity = null) {
-            // TODO: get all properties from crm model
+        public static ColumnSet GetColumnSetByProperties(params Expression<Func<T, object>>[] fields) {
+            ColumnSet columns = new ColumnSet();
 
-            // return type
+            PropertyInfo[] modelProps = typeof(T).GetProperties();
+
+            foreach (var field in fields) {
+                string test = "";
+            }
+            
+            return columns;
+        }
+
+        public static Entity MapToEntity(T model, Entity entity = null, params Expression<Func<T, object>>[] fields) {            
             if (entity == null) {
                 entity = new Entity();
+                CRMEntityAttribute crmEntAtt = typeof(T).GetCustomAttribute(typeof(CRMEntityAttribute)) as CRMEntityAttribute;
+                entity.LogicalName = crmEntAtt.EntityLogicalName;
             }
+
+            // validation
+            if (String.IsNullOrWhiteSpace(entity.LogicalName)) {
+                throw new NullReferenceException("Entity Logical Name not set.");
+            }
+
+            // TODO: get all properties from crm model
 
             // TODO: read metadata
 
