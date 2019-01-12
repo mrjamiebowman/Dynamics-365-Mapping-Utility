@@ -13,8 +13,10 @@ This tool will map data from Dynamics 365 entities, json, or webhook calls into 
 
 ## Getting Started
 
+```csharp
 DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = customMapping<AccountModel>;  
 AccountModel accountModel = DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToModel(postImage, accountModel);
+```
 
 ## Contributing
 
