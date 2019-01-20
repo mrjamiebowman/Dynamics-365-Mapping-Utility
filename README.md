@@ -149,8 +149,11 @@ public void Post([FromBody] JObject data) {
 ```
 
 ## Contributing
+@mrjamiebowman
 
 ## Roadmap
+~ Ability to map data to view model
+~ Plugin tool for XrmToolBox to autogenerate POCO classes
 
 ## Backlog
 
