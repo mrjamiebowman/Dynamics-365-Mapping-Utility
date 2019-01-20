@@ -132,10 +132,6 @@ namespace DynamicsCrmMappingUtility {
 
                     // Simple Fields: Single Line of Text, Option Set, Two Options, Image, Whole Number, Floating Point Number, Decimal Number, Currency, Multiple Lines of Text, Date and Time, Lookup
 
-                    // Calculated Fields: Single Line of Text, Option Set, Two Options, Whole Number, Decimal Number, Currency, Date and Time
-
-                    // Rollup Field: Whole Number, Decimal Number, Currency, Date and Time
-
                     // automap properties
                     if (attr.value.GetType() == typeof(String)) {
                         // string
