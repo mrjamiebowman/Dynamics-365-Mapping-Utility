@@ -15,6 +15,8 @@ This tool will map data from Dynamics 365 entities, json, or webhook calls into 
 
 Create your POCO class that will represent the entity model. The CRM attribute classes will reference the entity and fieldnames in CRM.
 
+#### AccountModel to represent Account Entity in Dynamics CRM
+
 ```csharp
 [CRMEntity("account")]
 public class AccountModel 
@@ -95,9 +97,55 @@ public class AccountModel
 } 
 ````
 
+#### Enumeration Type for OptionSetValue
+````csharp
+public enum CustomerTypeCodeType {
+    Competitor = 1,
+    Consultant = 2,
+    Customer = 3,
+    Investor = 4,
+    Partner = 5,
+    Influencer = 6,
+    Press = 7,
+    Prospect = 8,
+    Reseller = 9,
+    Supplier = 10,
+    Vendor = 11,
+    Other = 12
+}
+````
+
+#### Custom Mapping Helper
+````csharp
+public class CustomAutoMapsHelper {
+    public static void CustomMapping<T>(T model, Type customFieldMap, PropertyInfo property, object value) where T : class {
+        if (customFieldMap == typeof(CustomerTypeCodeType?)) {
+            // CustomerTypeCodeType?
+            OptionSetValue optSet = ((JObject)value).ToObject<OptionSetValue>();
+            property.SetValue(model, (CustomerTypeCodeType)optSet.Value);
+        }
+    }
+}
+````
+
+#### API WebHook
+For this example we will be modeling the sample code after an API WebHook from Dynamics CRM.
+
 ```csharp
-DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = customMapping<AccountModel>;  
-AccountModel accountModel = DynamicsCrmAutoMapper<AccountModel>.MapDataCrmToModel(postImage, accountModel);
+// POST api/values
+[HttpPost]
+public void Post([FromBody] JObject data) {            
+    JObject postImage = (JObject)data["PostEntityImages"][0]["value"];
+
+    // instantiate model
+    AccountModel model = new AccountModel();
+
+    // map JObject data to model
+    DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+    DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
+
+    string test = model.AccountName;
+}
 ```
 
 ## Contributing
