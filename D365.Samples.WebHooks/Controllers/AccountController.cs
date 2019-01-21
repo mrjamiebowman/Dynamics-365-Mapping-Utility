@@ -25,7 +25,8 @@ namespace D365.Samples.WebHook.Controllers {
             DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomMapsHelper.CustomMapping;
             DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
-            string test = model.AccountName;
+            string accountName = model.AccountName;
+            string accountNumber = model.AccountNumber;
         }
     }
 }
