@@ -149,6 +149,15 @@ public void Post([FromBody] JObject data) {
 }
 ```
 
+### Legacy Support
+As Dynamics CRM moves away from the SDK to the Web API endpoints, we will still provide support for the legacy CRM SDK. These tools will map data to and from the Entity object and ColumnSets.
+
+#### Map Model to Entity
+
+#### Map Entity to Model
+
+#### Get ColumnSets from Model
+
 ## Contributing
 @mrjamiebowman
 
