@@ -200,7 +200,7 @@ namespace DynamicsCrmMappingUtility
         }
 
         /// <summary>
-        /// Legacy: MapToModel - will mape Xrm Entity data to model class.
+        /// Legacy: MapToModel - will map Xrm Entity data to model class.
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="model"></param>
