@@ -144,7 +144,8 @@ public void Post([FromBody] JObject data) {
     DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
     DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
-    string test = model.AccountName;
+    string accountName = model.AccountName;
+    string accountNumber = model.AccountNumber;
 }
 ```
 
