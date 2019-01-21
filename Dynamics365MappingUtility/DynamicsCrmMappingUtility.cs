@@ -113,6 +113,54 @@ namespace DynamicsCrmMappingUtility
             return properties;
         }
 
+        private static PropertyInfo GetPropertyFromExpression(Expression<Func<T, object>> GetPropertyLambda) {
+            MemberExpression Exp = null;
+
+            //this line is necessary, because sometimes the expression comes in as Convert(originalexpression)
+            if (GetPropertyLambda.Body is UnaryExpression) {
+                var UnExp = (UnaryExpression)GetPropertyLambda.Body;
+                if (UnExp.Operand is MemberExpression) {
+                    Exp = (MemberExpression)UnExp.Operand;
+                } else
+                    throw new ArgumentException();
+            } else if (GetPropertyLambda.Body is MemberExpression) {
+                Exp = (MemberExpression)GetPropertyLambda.Body;
+            } else {
+                throw new ArgumentException();
+            }
+
+            return (PropertyInfo)Exp.Member;
+        }
+
+        private static MemberInfo GetPropertyInfoFromExpression(Expression expression) {
+            if (expression == null) {
+                throw new ArgumentException("Expression is null.");
+            }
+
+            if (expression is MemberExpression) {
+                var memberExpression = (MemberExpression)expression;
+                return memberExpression.Member;
+            }
+
+            if (expression is MethodCallExpression) {
+                // Reference type method
+                var methodCallExpression = (MethodCallExpression)expression;
+                return methodCallExpression.Method;
+            }
+
+            if (expression is UnaryExpression) {
+                // Property, field of method returning value type
+                var unaryExpression = (UnaryExpression)expression;
+                if (unaryExpression.Operand is MemberExpression) {
+                    return ((MemberExpression)unaryExpression.Operand).Member;
+                } else {
+                    throw new ArgumentException();
+                }
+            }
+
+            throw new ArgumentException("ArgumentException");
+        }
+
         private static System.Attribute GetAttributeFromExpression(Expression expression, Type attrType) {
             if (expression == null) {
                 throw new ArgumentException("Expression is null.");
@@ -190,11 +238,31 @@ namespace DynamicsCrmMappingUtility
                 throw new NullReferenceException("Entity Logical Name not set.");
             }
 
-            // TODO: get all properties from crm model
+            Func<Entity, PropertyInfo, CRMAttribute, Entity> mapToEntity = (Entity ent, PropertyInfo prop, CRMAttribute attr) => {
+                if (!String.IsNullOrWhiteSpace(attr.FieldName)) {
+                    entity[attr.FieldName] = prop.GetValue(model);
+                }
 
-            // TODO: read metadata
+                return ent;
+            };
 
-            // TODO: map to entity
+            // get properties from model
+            List<PropertyInfo> modelProperties;
+            if (fields != null) {
+                foreach (var obj in fields) {
+                    CRMAttribute attr = GetAttributeFromExpression(obj?.Body, typeof(CRMAttribute)) as CRMAttribute;
+                    PropertyInfo prop = (PropertyInfo)GetPropertyInfoFromExpression(obj.Body);
+                    entity = mapToEntity(entity, prop, attr);
+                }
+            } else {
+                // default to all
+                modelProperties = model.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).ToList();
+
+                foreach (PropertyInfo prop in modelProperties) {
+                    CRMAttribute attr = prop.GetCustomAttribute<CRMAttribute>();
+                    entity = mapToEntity(entity, prop, attr);
+                }
+            }
 
             return entity;
         }
