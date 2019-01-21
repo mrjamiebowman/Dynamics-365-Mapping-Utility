@@ -243,6 +243,8 @@ namespace DynamicsCrmMappingUtility
                     entity[attr.FieldName] = prop.GetValue(model);
                 }
 
+                // TODO: complex data objects like EntityReference, OptionSets
+
                 return ent;
             };
 
