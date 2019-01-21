@@ -153,11 +153,27 @@ public void Post([FromBody] JObject data) {
 As Dynamics CRM moves away from the SDK to the Web API endpoints, we will still provide support for the legacy CRM SDK. These tools will map data to and from the Entity object and ColumnSets.
 
 #### Map Model to Entity
+````csharp
+AccountModel model = new AccountModel();
+model.AccountId = new Guid("B14AD0D0-83FB-4D86-BE02-4549436F8B43");
+model.AccountName = "Alpine Ski House";
+model.AccountNumber = "ACCT1234";
+
+// map model to entity
+Entity accountEntity = DynamicsCrmMappingUtility<AccountModel>.MapToEntity(model, null);
+````
 
 #### Map Entity to Model
 
 #### Get ColumnSets from Model
-
+````csharp
+ ColumnSet columnSet = DynamicsCrmMappingUtility<AccountModel>.GetColumnSetByFields(
+    x => x.AccountId, 
+    x => x.AccountName, 
+    x => x.AccountNumber, 
+    x => x.CreatedOn);
+````
+                
 ## Contributing
 @mrjamiebowman
 
