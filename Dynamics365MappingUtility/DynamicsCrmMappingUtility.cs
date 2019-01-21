@@ -161,7 +161,6 @@ namespace DynamicsCrmMappingUtility
             ColumnSet columns = new ColumnSet();
 
             foreach (var obj in fields) {
-                // TODO: magic?
                 CRMAttribute attr = GetAttributeFromExpression(obj?.Body, typeof(CRMAttribute)) as CRMAttribute;
 
                 if (attr != null) {
