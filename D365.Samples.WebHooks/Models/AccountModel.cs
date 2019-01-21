@@ -39,8 +39,8 @@ namespace D365.Samples.WebHooks.Models {
         public bool? DoNotPhone { get; set; }
 
 
-        [CRM(FieldName = "entityimage")]
-        public Decimal? EntityImage { get; set; }
+        //[CRM(FieldName = "entityimage")]
+        //public Decimal? EntityImage { get; set; }
 
         [CRM(FieldName = "modifiedon")]
         public DateTime? ModifiedOn { get; set; }
