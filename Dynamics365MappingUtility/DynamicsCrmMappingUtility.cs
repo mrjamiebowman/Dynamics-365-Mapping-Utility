@@ -164,7 +164,18 @@ namespace DynamicsCrmMappingUtility {
                                 prop.SetValue(model, (Guid)json["Id"]);
                             }
                         } else if (crmDataType == typeof(OptionSetValue)) {
-                            string test = "";
+                            if (prop.PropertyType == typeof(CRMStateType?) || prop.PropertyType == typeof(CRMStateType)) {
+                                CRMStateType state;
+                                if (Enum.TryParse<CRMStateType>(json["Value"].ToString(), out state)) {
+                                    prop.SetValue(model, state);
+                                } else {
+                                    prop.SetValue(model, null);
+                                }                                
+                            } else {
+                                prop.SetValue(model, (int?)json["Value"]);
+                            }                            
+                        } else if (crmDataType == typeof(Money)) {
+                            prop.SetValue(model, (decimal?)json["Value"]);
                         }
                     }
                 } /* end foreach */

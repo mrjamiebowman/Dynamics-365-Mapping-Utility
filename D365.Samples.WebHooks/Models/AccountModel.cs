@@ -1,5 +1,6 @@
 ﻿using D365.Samples.WebHooks.Enums;
 using DynamicsCrmMappingUtility.Attributes;
+using DynamicsCrmMappingUtility.DataTypes;
 using System;
 
 namespace D365.Samples.WebHooks.Models {
@@ -25,8 +26,18 @@ namespace D365.Samples.WebHooks.Models {
         [CRM(FieldName = "customertypecode", CustomFieldMap = typeof(CustomerTypeCodeType?))]
         public CustomerTypeCodeType? CustomerTypeCode { get; set; }
 
+        [CRM(FieldName = "description")]
+        public string Description { get; set; }
+
         [CRM(FieldName = "donotemail")]
         public bool? DoNotEmail { get; set; }
+
+        [CRM(FieldName = "emailaddress1")]
+        public string Email { get; set; }
+
+        [CRM(FieldName = "donotphone")]
+        public bool? DoNotPhone { get; set; }
+
 
         [CRM(FieldName = "entityimage")]
         public Decimal? EntityImage { get; set; }
@@ -46,7 +57,13 @@ namespace D365.Samples.WebHooks.Models {
         [CRM(FieldName = "ownerid")]
         public Guid? OwnerId { get; set; }
 
-        [CRM(FieldName = "status")]
+        [CRM(FieldName = "statecode")]
+        public CRMStateType? State { get; set; }
+
+        [CRM(FieldName = "statecode")]
+        public int? StateInt { get; set; }
+
+        [CRM(FieldName = "statuscode")]
         public int? Status { get; set; }
 
         [CRM(FieldName = "websiteurl")]
@@ -65,7 +82,7 @@ namespace D365.Samples.WebHooks.Models {
         [CRM(FieldName = "address1_city")]
         public string Address1City { get; set; }
 
-        [CRM(FieldName = "address1_state")]
+        [CRM(FieldName = "address1_stateorprovince")]
         public string Address1State { get; set; }
 
         [CRM(FieldName = "address1_postalcode")]

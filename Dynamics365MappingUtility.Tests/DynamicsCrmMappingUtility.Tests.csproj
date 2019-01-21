@@ -35,4 +35,10 @@
     <Folder Include="POSTMAN\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="WEBHOOKDATA\account_update.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
