@@ -2,7 +2,7 @@
 using Microsoft.Xrm.Sdk.Query;
 using Xunit;
 
-namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
+namespace DynamicsCrmMappingUtility.Tests.Legacy {
     public class ColumnSetsTests {
         [Fact]
         [Trait("Category", "Legacy")]
