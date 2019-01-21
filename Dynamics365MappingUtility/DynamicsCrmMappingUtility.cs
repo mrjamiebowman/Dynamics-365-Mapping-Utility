@@ -11,8 +11,10 @@ using Microsoft.Xrm.Sdk.Query;
 using System.Linq.Expressions;
 using DynamicsCrmMappingUtility.Errors;
 
-namespace DynamicsCrmMappingUtility {
-    public class DynamicsCrmMappingUtility<T> where T : class {
+namespace DynamicsCrmMappingUtility
+{
+    public class DynamicsCrmMappingUtility<T> where T : class
+    {
         public delegate void CustomMappingMethodDelegate(T model, Type customFieldMap, PropertyInfo property, object value);
 
         public static CustomMappingMethodDelegate CustomMappingMethod { get; set; }
