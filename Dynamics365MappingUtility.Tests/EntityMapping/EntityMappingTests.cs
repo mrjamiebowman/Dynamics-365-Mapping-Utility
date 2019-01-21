@@ -16,7 +16,7 @@ namespace DynamicsCrmMappingUtility.Tests.EntityMapping {
             model.AccountNumber = "ACCT1234";
 
             // map jobject data to model
-            //DynamicsCrmAutoMapper<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+            //DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
             Entity accountEntity = DynamicsCrmMappingUtility<AccountModel>.MapToEntity(model, null);
 
             
