@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 
 namespace D365.Samples.WebHooks.Helpers {
-    public class CustomAutoMapsHelper {
+    public class CustomMapsHelper {
         public static void CustomMapping<T>(T model, Type customFieldMap, PropertyInfo property, object value) where T : class {
             if (customFieldMap == typeof(CustomerTypeCodeType?)) {
                 // CustomerTypeCodeType?

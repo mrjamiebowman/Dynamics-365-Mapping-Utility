@@ -41,7 +41,7 @@ namespace DynamicsCrmMappingUtility.Tests.EntityMapping {
             JObject postImage = (JObject)data["PostEntityImages"][0]["value"];
 
             // map jobject data to model
-            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomMapsHelper.CustomMapping;
             DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
             // assert

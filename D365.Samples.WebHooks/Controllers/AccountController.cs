@@ -22,7 +22,7 @@ namespace D365.Samples.WebHook.Controllers {
             AccountModel model = new AccountModel();
 
             // map JObject data to model
-            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomMapsHelper.CustomMapping;
             DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
             string test = model.AccountName;
