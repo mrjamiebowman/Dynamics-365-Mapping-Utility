@@ -163,6 +163,17 @@ model.AccountNumber = "ACCT1234";
 Entity accountEntity = DynamicsCrmMappingUtility<AccountModel>.MapToEntity(model, null);
 ````
 
+#### Map Model to Entity with Specified Fields
+````csharp
+AccountModel model = new AccountModel();
+model.AccountId = new Guid("B14AD0D0-83FB-4D86-BE02-4549436F8B43");
+model.AccountName = "Alpine Ski House";
+model.AccountNumber = "ACCT1234";
+
+// map model to entity
+Entity accountEntity = DynamicsCrmMappingUtility<AccountModel>.MapToEntity(model, null, x => x.AccountName, x => x.AccountId);
+````
+
 #### Map Entity to Model
 
 #### Get ColumnSets from Model
