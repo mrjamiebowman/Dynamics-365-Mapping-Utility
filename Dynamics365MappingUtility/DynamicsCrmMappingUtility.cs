@@ -25,6 +25,11 @@ namespace DynamicsCrmMappingUtility {
             return properties;
         }
 
+        /// <summary>
+        /// Legacy: GetColumnSetByFields - returns a ColumnSet based on properties selected.
+        /// </summary>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         public static ColumnSet GetColumnSetByFields(params Expression<Func<T, Object>>[] fields) {
             ColumnSet columns = new ColumnSet();
 
@@ -75,6 +80,13 @@ namespace DynamicsCrmMappingUtility {
             return ((MemberExpression)unaryExpression.Operand).Member.GetCustomAttribute(attrType);
         }
 
+        /// <summary>
+        /// Legacy: MapToEntity - will map model class data to Xrm Entity.
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="entity"></param>
+        /// <param name="fields"></param>
+        /// <returns></returns>
         public static Entity MapToEntity(T model, Entity entity = null, params Expression<Func<T, Object>>[] fields) {            
             if (entity == null) {
                 entity = new Entity();
@@ -96,6 +108,12 @@ namespace DynamicsCrmMappingUtility {
             return entity;
         }
 
+        /// <summary>
+        /// Legacy: MapToModel - will mape Xrm Entity data to model class.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public static T MapToModel(Entity entity, T model) {
 
             return model;
