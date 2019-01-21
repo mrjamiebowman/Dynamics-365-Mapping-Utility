@@ -1,5 +1,5 @@
 # Dynamics 365 (D365) Mapping Utility for C#
-This tool will map data from Dynamics 365 entities, json, or webhook calls into C# model classes using property metadata.
+This tool will auto map data from Dynamics 365 entities, json, or webhook calls into C# model classes using property metadata.
 
 | Master | Develop |
 |:------:|:-------:|
@@ -117,7 +117,7 @@ public enum CustomerTypeCodeType {
 
 #### Custom Mapping Helper
 ````csharp
-public class CustomAutoMapsHelper {
+public class CustomMapsHelper {
     public static void CustomMapping<T>(T model, Type customFieldMap, PropertyInfo property, object value) where T : class {
         if (customFieldMap == typeof(CustomerTypeCodeType?)) {
             // CustomerTypeCodeType?
@@ -141,7 +141,7 @@ public void Post([FromBody] JObject data) {
     AccountModel model = new AccountModel();
 
     // map JObject data to model
-    DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomAutoMapsHelper.CustomMapping;
+    DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = CustomMapsHelper.CustomMapping;
     DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model);
 
     string test = model.AccountName;
