@@ -19,55 +19,10 @@ namespace DynamicsCrmMappingUtility
 
         public static CustomMappingMethodDelegate CustomMappingMethod { get; set; }
 
-        private static List<PropertyInfo> GetFieldByFieldName(string fieldName) {
-            var publicProps = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public);
-            List<PropertyInfo> properties = (publicProps.Where(x => x.CustomAttributes.Any(ca =>
-                (ca.AttributeType == typeof(CRMAttribute)) &&
-                ca.NamedArguments.Any(na => na.TypedValue.Value.ToString() == fieldName)))).ToList();
-            return properties;
-        }
-
-      
-
-        private static System.Attribute GetAttributeFromExpression(Expression expression, Type attrType) {
-            if (expression == null) {
-                throw new ArgumentException("Expression is null.");
-            }
-
-            if (expression is MemberExpression) {
-                // Reference type property or field
-                var memberExpression = (MemberExpression)expression;
-                return memberExpression.Member.GetCustomAttribute(attrType);
-            }
-
-            if (expression is MethodCallExpression) {
-                // Reference type method
-                var methodCallExpression = (MethodCallExpression)expression;
-                return methodCallExpression.Method.GetCustomAttribute(attrType);
-            }
-
-            if (expression is UnaryExpression) {
-                // Property, field of method returning value type
-                var unaryExpression = (UnaryExpression)expression;
-                return GetAttributeFromExpression(unaryExpression, attrType);
-            }
-
-            throw new ArgumentException("ArgumentException");
-        }
-
-        private static System.Attribute GetAttributeFromExpression(UnaryExpression unaryExpression, Type attrType) {
-            if (unaryExpression.Operand is MethodCallExpression) {
-                var methodExpression = (MethodCallExpression)unaryExpression.Operand;
-                return methodExpression.Method.GetCustomAttribute(attrType);
-            }
-
-            return ((MemberExpression)unaryExpression.Operand).Member.GetCustomAttribute(attrType);
-        }
-               
         /// <summary>
-        /// 
+        /// MapToModel (WebHook) - Maps WebHook data to model.
         /// </summary>
-        /// <param name="image">MapToModel (WebHook): Target, PreImage, or PostImage</param>
+        /// <param name="image">WebHook Target, PreImage, or PostImage</param>
         /// <param name="model">Model with CRM Attributes for metadata mapping</param>
         /// <returns></returns>
         public static T MapToModel(JObject image, T model) {
@@ -147,6 +102,53 @@ namespace DynamicsCrmMappingUtility
 
             return model;
         }
+
+        #region Private Methods
+
+        private static List<PropertyInfo> GetFieldByFieldName(string fieldName) {
+            var publicProps = typeof(T).GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            List<PropertyInfo> properties = (publicProps.Where(x => x.CustomAttributes.Any(ca =>
+                (ca.AttributeType == typeof(CRMAttribute)) &&
+                ca.NamedArguments.Any(na => na.TypedValue.Value.ToString() == fieldName)))).ToList();
+            return properties;
+        }
+
+        private static System.Attribute GetAttributeFromExpression(Expression expression, Type attrType) {
+            if (expression == null) {
+                throw new ArgumentException("Expression is null.");
+            }
+
+            if (expression is MemberExpression) {
+                // Reference type property or field
+                var memberExpression = (MemberExpression)expression;
+                return memberExpression.Member.GetCustomAttribute(attrType);
+            }
+
+            if (expression is MethodCallExpression) {
+                // Reference type method
+                var methodCallExpression = (MethodCallExpression)expression;
+                return methodCallExpression.Method.GetCustomAttribute(attrType);
+            }
+
+            if (expression is UnaryExpression) {
+                // Property, field of method returning value type
+                var unaryExpression = (UnaryExpression)expression;
+                return GetAttributeFromExpression(unaryExpression, attrType);
+            }
+
+            throw new ArgumentException("ArgumentException");
+        }
+
+        private static System.Attribute GetAttributeFromExpression(UnaryExpression unaryExpression, Type attrType) {
+            if (unaryExpression.Operand is MethodCallExpression) {
+                var methodExpression = (MethodCallExpression)unaryExpression.Operand;
+                return methodExpression.Method.GetCustomAttribute(attrType);
+            }
+
+            return ((MemberExpression)unaryExpression.Operand).Member.GetCustomAttribute(attrType);
+        }
+
+        #endregion
 
         #region Legacy Methods
 
