@@ -9,6 +9,7 @@ using Microsoft.Xrm.Sdk;
 using DynamicsCrmMappingUtility.Models;
 using Microsoft.Xrm.Sdk.Query;
 using System.Linq.Expressions;
+using DynamicsCrmMappingUtility.Errors;
 
 namespace DynamicsCrmMappingUtility {
     public class DynamicsCrmMappingUtility<T> where T : class {
@@ -123,7 +124,7 @@ namespace DynamicsCrmMappingUtility {
                     // manually map first
                     if (crmAttr.CustomFieldMap != null) {
                         if (CustomMappingMethod == null) {
-                            throw new InvalidOperationException($"The custom mapping method for '{crmAttr.CustomFieldMap}' has not been set.");
+                            throw new DynamicsCrmMappingUtilityError($"The custom mapping method for '{crmAttr.CustomFieldMap}' has not been set.");
                         }
 
                         CustomMappingMethod(model, crmAttr.CustomFieldMap, prop, attr.value);

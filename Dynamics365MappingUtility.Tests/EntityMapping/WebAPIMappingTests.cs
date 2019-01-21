@@ -2,6 +2,7 @@
 using D365.Samples.WebHooks.Helpers;
 using D365.Samples.WebHooks.Models;
 using DynamicsCrmMappingUtility.DataTypes;
+using DynamicsCrmMappingUtility.Errors;
 using DynamicsCrmMappingUtility.Tests.Helpers;
 using Microsoft.Xrm.Sdk;
 using Newtonsoft.Json.Linq;
@@ -12,6 +13,25 @@ using Xunit;
 
 namespace DynamicsCrmMappingUtility.Tests.EntityMapping {
     public class WebAPIMappingTests {
+
+        [Fact]
+        public void MapWebAPIToModelCustomMappingThrowsError() {
+            AccountModel model = new AccountModel();
+
+            // name of custom map
+            string customFieldMap = "System.Nullable`1[D365.Samples.WebHooks.Enums.CustomerTypeCodeType]";
+
+            // get web hook data
+            JObject data = WebHookHelper.LoadWebHookData("account_update.txt");
+            JObject postImage = (JObject)data["PostEntityImages"][0]["value"];
+
+            // intentionally cause an error
+            DynamicsCrmMappingUtility<AccountModel>.CustomMappingMethod = null;
+
+            DynamicsCrmMappingUtilityError ex = Assert.Throws<DynamicsCrmMappingUtilityError>(() => DynamicsCrmMappingUtility<AccountModel>.MapToModel(postImage, model));
+            Assert.Equal($"The custom mapping method for '{customFieldMap}' has not been set.", ex.Message);
+        }
+
         [Fact]
         public void MapWebAPIToModel() {
             AccountModel model = new AccountModel();
