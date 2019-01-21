@@ -1,5 +1,5 @@
 # Dynamics 365 (D365) Mapping Utility for C#
-This tool will map data from Dynamics 365 entities, json, or webhook calls into C# model classes using property metadata.
+This tool will auto map data from Dynamics 365 entities, json, or webhook calls into C# model classes using property metadata.
 
 | Master | Develop |
 |:------:|:-------:|
