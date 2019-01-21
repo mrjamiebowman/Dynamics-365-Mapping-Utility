@@ -10,7 +10,7 @@ namespace D365.Samples.WebHook.Controllers {
     public class AccountController : ControllerBase {
         [HttpGet]
         public string Get() {
-            return "Dynamics 365 Entity/WebHook AutoMapper";
+            return "Dynamics 365 Mapping Utility";
         }
 
         // POST api/values
