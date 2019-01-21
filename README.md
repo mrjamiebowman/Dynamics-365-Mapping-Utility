@@ -97,7 +97,7 @@ public class AccountModel
 } 
 ````
 
-#### Enumeration Type for OptionSetValue
+#### Enumeration Type for OptionSetValue (Custom Mapping of Option Set to Enum)
 ````csharp
 public enum CustomerTypeCodeType {
     Competitor = 1,
