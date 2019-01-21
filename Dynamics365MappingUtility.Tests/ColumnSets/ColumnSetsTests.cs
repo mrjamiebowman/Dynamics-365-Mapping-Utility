@@ -5,6 +5,7 @@ using Xunit;
 namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
     public class ColumnSetsTests {
         [Fact]
+        [Trait("Category", "Legacy")]
         public void GetColumnSetsTests() {
              ColumnSet columnSet = DynamicsCrmMappingUtility<AccountModel>.GetColumnSetByFields(
                 x => x.AccountId, 
@@ -13,7 +14,11 @@ namespace DynamicsCrmMappingUtility.Tests.ColumnSets {
                 x => x.CreatedOn);
 
             // assert
-            Assert.Equal(4, columnSet.Columns.Count);            
+            Assert.Equal(4, columnSet.Columns.Count);
+            Assert.Equal("accountid", columnSet.Columns[0]);
+            Assert.Equal("name", columnSet.Columns[1]);
+            Assert.Equal("accountnumber", columnSet.Columns[2]);
+            Assert.Equal("createdon", columnSet.Columns[3]);
         }
     }
 }
